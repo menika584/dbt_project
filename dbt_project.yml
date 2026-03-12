@@ -1,0 +1,25 @@
+name: 'my_dbt_project'
+version: '1.0.0'
+config-version: 2
+
+profile: 'my_dbt_project'   # must match the name in ~/.dbt/profiles.yml
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+
+models:
+  my_dbt_project:
+    staging:
+      schema: dbt_dev
+      materialized: view       # build as SQL views
+    intermediate:
+      schema: dbt_dev
+      materialized: view       # intermediate models are also views
+    marts:
+      schema: dbt_dev
+      materialized: table      # build as physical tables

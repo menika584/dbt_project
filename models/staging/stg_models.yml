@@ -1,0 +1,114 @@
+version: 2
+
+models:
+  # ── stg_customers tests ────────────────────────────────────
+  - name: stg_customers
+    description: Cleaned customers table
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: Customer email address
+        tests:
+          - not_null
+          - unique
+      - name: full_name
+        tests:
+          - not_null
+
+  # ── stg_orders tests ──────────────────────────────────────
+  - name: stg_orders
+    description: Cleaned orders table
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Foreign key to customers
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: status
+        description: Order status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMPLETED', 'PENDING', 'CANCELLED']
+      - name: amount
+        description: Order total amount
+        tests:
+          - not_null
+
+  # ── stg_products tests ──────────────────────────────────────
+  - name: stg_products
+    description: Cleaned products table
+    columns:
+      - name: product_id
+        description: Primary key for products
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        tests:
+          - not_null
+      - name: list_price
+        tests:
+          - not_null
+
+  # ── stg_order_items tests ──────────────────────────────────────
+  - name: stg_order_items
+    description: Cleaned order items table
+    columns:
+      - name: order_item_id
+        tests:
+          - unique
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+
+  # ── stg_payments tests ──────────────────────────────────────
+  - name: stg_payments
+    description: Cleaned payments table
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+
+  # ── int_order_details tests ──────────────────────────────────────
+  - name: int_order_details
+    description: Order details with product information
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+
+  # ── mart_customer_orders tests ──────────────────────────────────────
+  - name: mart_customer_orders
+    description: Customer order summary
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null
+
+  # ── mart_order_summary tests ──────────────────────────────────────
+  - name: mart_order_summary
+    description: Full order summary with products and payment status
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
