@@ -22,5 +22,4 @@ SELECT
             TO_DATE("date", 'DD-MM-YYYY'),
             CAST('1900-01-01' AS DATE)
         ) AS join_date
-
 FROM source
