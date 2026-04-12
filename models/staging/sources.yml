@@ -88,6 +88,7 @@ sources:
               - unique
       - name: bronze_products
       - name: bronze_orders
+      - name: order_report
       - name: daily_sales
 
 
