@@ -86,7 +86,8 @@ sources:
           - name : join_date
             tests:
               - unique
-
+      - name: bronze_products
+      - name: bronze_orders
 
 
 
