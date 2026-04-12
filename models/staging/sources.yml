@@ -1,42 +1,95 @@
 version: 2
 
 sources:
-  - name: raw
-    schema: raw
+  - name: menika
+    schema: menika
     tables:
-      - name: customers
+      - name: raw_courses
         columns:
-          - name: id
+          - name: course_id
             tests:
               - unique
               - not_null
-      - name: orders
+      - name: raw_students
         columns:
-          - name: id
+          - name: student_id
             tests:
               - unique
               - not_null
+          - name: name
+            tests:
+              - not_null
+      - name: raw_customers
+        columns:
+          - name: custid
+            tests:
+              - unique
+              - not_null
+          - name: custname
+            tests:
+              - not_null
+      - name: row_orders
+        columns:
+          - name: orderid
+            tests:
+              - unique
+              - not_null
+          - name: custid
+            tests:
+              - not_null
+          - name: amount
+          - name: status
+          - name: order_date
+      - name: row_payments
+        columns:
+          - name: paymentid
+            tests:
+              - unique
+              - not_null
+          - name: orderid
+            tests:
+              - not_null
+          - name: amount
+          - name: method
+          - name: payment_date
+      - name: bronze_customers
+        columns:
           - name: customer_id
             tests:
+              - unique
               - not_null
-              - relationships:
-                  to: source('raw', 'customers')
-                  field: id
-      - name: products
+          - name: customer_name
+            tests:
+              - not_null
+      - name: bronze_driver
         columns:
-          - name: id
+          - name: driver_id
             tests:
               - unique
               - not_null
-      - name: order_items
+      - name: rides
         columns:
-          - name: id
+          - name: ride_id
             tests:
               - unique
               - not_null
-      - name: payments
+      - name: bronze_company
         columns:
-          - name: id
+          - name : country_name
+            tests:
+              - not_null
+      - name: bronze_employee
+        columns:
+          - name : name
             tests:
               - unique
-              - not_null
+          - name : join_date
+            tests:
+              - unique
+
+
+
+
+
+
+
