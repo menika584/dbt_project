@@ -17,7 +17,6 @@ SELECT
         ELSE 'Other'
     END AS country_name,
 
-
      COALESCE(
             TO_DATE("date", 'YYYY-MM-DD'),
             TO_DATE("date", 'DD-MM-YYYY'),
