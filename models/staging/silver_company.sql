@@ -8,7 +8,6 @@ SELECT
         WHEN id ~ '^[0-9]+$' THEN CAST(id AS INT)
         ELSE NULL
     END AS company_id,
-
     COALESCE(TRIM(name), 'Unknown') AS company_name,
     CASE
         WHEN country_name IN ('IND', 'India') THEN 'India'
