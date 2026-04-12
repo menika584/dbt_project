@@ -2,7 +2,6 @@ WITH source AS (
     SELECT *
     FROM {{ source('menika', 'bronze_company') }}
 )
-
 SELECT
     CASE
         WHEN id ~ '^[0-9]+$' THEN CAST(id AS INT)
