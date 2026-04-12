@@ -6,7 +6,6 @@ silver AS (
     SELECT *
     FROM {{ ref('silver_rides') }}
 )
-
 SELECT
     s.ride_id,
     s.driver_id,
