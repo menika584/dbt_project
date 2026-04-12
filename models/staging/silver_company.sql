@@ -10,7 +10,6 @@ SELECT
     END AS company_id,
 
     COALESCE(TRIM(name), 'Unknown') AS company_name,
-
     CASE
         WHEN country_name IN ('IND', 'India') THEN 'India'
         WHEN country_name IN ('USA', 'US') THEN 'USA'
