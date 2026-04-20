@@ -90,8 +90,12 @@ sources:
       - name: bronze_orders
       - name: order_report
       - name: daily_sales
+
+      - name: Menika_aarna
+
       - name: meri_aarna
 
+>>>>>>> 746ac8f49c1ab88cd999a846fc1ae2f11a55efb5
 
 
 
