@@ -1,17 +1,19 @@
-WITH source AS (
+WITH src_orders AS (
     SELECT *
-    FROM {{ source('menika', 'row_orders') }}
+    FROM {{ source('public', 'orders') }}
 )
+
 SELECT
     orderid AS order_id,
-    custid AS customer_id,
-    CASE WHEN amount < 0 THEN 0 ELSE amount END AS amount,
-    LOWER(status) AS status,
-    order_date
-FROM (
-    SELECT *,
-           ROW_NUMBER() OVER(PARTITION BY orderid ORDER BY order_date DESC) AS rn
-    FROM source
-    WHERE custid IS NOT NULL
-) t
-WHERE rn = 1
+    COALESCE(custid, -1) AS cust_id,
+    CASE
+        WHEN amount < 0 THEN 0
+        ELSE amount
+    END AS amount,
+    CASE
+        WHEN LOWER(status) IN ('completed', 'pending', 'shipped')
+            THEN LOWER(status)
+        ELSE 'unknown'
+    END AS order_status,
+    CAST(order_date AS DATE) AS order_date
+FROM src_orders

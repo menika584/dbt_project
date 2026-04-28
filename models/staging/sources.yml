@@ -1,96 +1,14 @@
 version: 2
 
 sources:
-  - name: menika
-    schema: menika
+  - name: public
+    schema: public
     tables:
-      - name: raw_courses
-        columns:
-          - name: course_id
-            tests:
-              - unique
-              - not_null
-      - name: raw_students
-        columns:
-          - name: student_id
-            tests:
-              - unique
-              - not_null
-          - name: name
-            tests:
-              - not_null
-      - name: raw_customers
-        columns:
-          - name: custid
-            tests:
-              - unique
-              - not_null
-          - name: custname
-            tests:
-              - not_null
-      - name: row_orders
-        columns:
-          - name: orderid
-            tests:
-              - unique
-              - not_null
-          - name: custid
-            tests:
-              - not_null
-          - name: amount
-          - name: status
-          - name: order_date
-      - name: row_payments
-        columns:
-          - name: paymentid
-            tests:
-              - unique
-              - not_null
-          - name: orderid
-            tests:
-              - not_null
-          - name: amount
-          - name: method
-          - name: payment_date
-      - name: bronze_customers
-        columns:
-          - name: customer_id
-            tests:
-              - unique
-              - not_null
-          - name: customer_name
-            tests:
-              - not_null
-      - name: bronze_driver
-        columns:
-          - name: driver_id
-            tests:
-              - unique
-              - not_null
-      - name: rides
-        columns:
-          - name: ride_id
-            tests:
-              - unique
-              - not_null
-      - name: bronze_company
-        columns:
-          - name : country_name
-            tests:
-              - not_null
-      - name: bronze_employee
-        columns:
-          - name : name
-            tests:
-              - unique
-          - name : join_date
-            tests:
-              - unique
-      - name: bronze_products
-      - name: bronze_orders
-      - name: order_report
-      - name: daily_sales
-      - name: meri_aarna
+      - name: students
+      - name: courses
+      - name: orders
+      - name: payments
+
 
 
 

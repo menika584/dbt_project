@@ -1,5 +1,5 @@
-WITH source AS (
-    SELECT * FROM {{ source('menika', 'raw_students') }}
+WITH src_students AS (
+    SELECT * FROM {{ source('public', 'students') }}
 )
 SELECT
       student_id,
@@ -8,5 +8,5 @@ SELECT
       age,
       course_id,
       CAST(created_at AS DATE) AS created_date
-FROM source
+FROM src_students
 
