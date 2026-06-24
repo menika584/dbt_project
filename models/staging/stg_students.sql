@@ -1,5 +1,5 @@
 WITH src_students AS (
-    SELECT * FROM {{ source('public', 'students') }}
+    SELECT * FROM {{ source('menika', 'students') }}
 )
 SELECT
       student_id,

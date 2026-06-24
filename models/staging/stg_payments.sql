@@ -1,6 +1,6 @@
 WITH src_payments AS (
     SELECT *
-    FROM {{ source('public', 'payments') }}
+    FROM {{ source('menika', 'raw_payments') }}
 )
 
 SELECT

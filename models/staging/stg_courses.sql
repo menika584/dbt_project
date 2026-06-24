@@ -1,6 +1,6 @@
 WITH src_courses AS (
     SELECT *
-    FROM {{ source('public', 'courses') }}
+    FROM {{ source('menika', 'courses') }}
 )
 
 SELECT

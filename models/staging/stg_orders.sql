@@ -1,6 +1,6 @@
 WITH src_orders AS (
     SELECT *
-    FROM {{ source('public', 'orders') }}
+    FROM {{ source('menika', 'raw_orders') }}
 )
 
 SELECT
