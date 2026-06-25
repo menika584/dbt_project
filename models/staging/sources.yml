@@ -1,21 +1,40 @@
 version: 2
 
 sources:
+
   - name: menika
     schema: menika
     tables:
       - name: rides
+
       - name: raw_customers
+
       - name: raw_orders
+
       - name: raw_payments
+
       - name: students
+
       - name: courses
+
       - name: company
+
       - name: employee
+
       - name: bronze_orders
+
       - name: bronze_products
+
       - name: bronze_customers
+
       - name: bronze_driver
+      -  name: raw_sales
+         columns:
+           - name: sale_id
+             tests:
+                 - not_null
+                 - unique
+
 
 
 
