@@ -23,6 +23,14 @@ sources:
 
       - name: bronze_orders
 
+      - name: order_report
+      - name: daily_sales
+
+      - name: Menika_aarna
+
+      - name: meri_aarna
+
+
       - name: bronze_products
 
       - name: bronze_customers
