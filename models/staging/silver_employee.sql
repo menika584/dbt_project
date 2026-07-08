@@ -1,6 +1,6 @@
 WITH source AS (
     SELECT *
-    FROM {{ source('menika', 'bronze_employee') }}
+    FROM {{ source('menika', 'employee') }}
 )
 
 SELECT
@@ -21,12 +21,15 @@ SELECT
         ELSE NULL
     END AS employee_salary,
 
-         COALESCE(
-             TO_DATE(NULLIF("join_date", ''), 'YYYY-MM-YYYY'),
-             TO_DATE("join_date", 'DD-MM-YYYY'),
-             CAST('1900-01-01' AS DATE)
-         ) AS join_date
+    CASE
+        WHEN join_date ~ '^\d{4}-\d{2}-\d{2}$'
+            THEN TO_DATE(join_date, 'YYYY-MM-DD')
 
+        WHEN join_date ~ '^\d{2}-\d{2}-\d{4}$'
+            THEN TO_DATE(join_date, 'DD-MM-YYYY')
+
+        ELSE DATE '1900-01-01'
+    END AS join_date
 
 FROM source
 

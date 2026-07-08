@@ -4,11 +4,11 @@ WITH bronze AS (
 )
 
 SELECT
-    ride_id,
-    CAST(user_id AS INT) AS user_id,
-    CAST(driver_id AS INT) AS driver_id,
-    CAST(fare AS INT) AS fare,
-    city,
-    status
+     ride_id,
+     user_id,
+     driver_id,
+     CAST(fare AS INT) AS fare,
+     city,
+     status
 FROM bronze
 WHERE status = 'completed'
