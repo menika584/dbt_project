@@ -1,10 +1,15 @@
-WITH src_product AS (
+WITH source AS (
+
     SELECT *
     FROM {{ source('menika', 'product') }}
+
 )
 
 SELECT
-      product_id,
-      item_name,
-      category
-FROM src_product
+
+    product_id,
+    INITCAP(TRIM(product_name)) AS product_name,
+    INITCAP(TRIM(category)) AS category,
+    price
+
+FROM source

@@ -1,7 +1,7 @@
-WITH source AS (
+WITH sales AS (
 
     SELECT *
-    FROM {{ source('menika', 'sales') }}
+    FROM {{ ref('stg_sales') }}
 
 )
 
@@ -13,4 +13,4 @@ SELECT
     quantity,
     sale_date
 
-FROM source
+FROM sales
