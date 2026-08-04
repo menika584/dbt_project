@@ -12,7 +12,10 @@ SELECT
       UPPER(category) AS category,
       quantity,
       unit_price,
-      quantity * unit_price AS total_amount,
+      CASE
+          WHEN quantity * unit_price < 0 THEN 0
+          ELSE quantity * unit_price
+      END AS total_amount,
       sale_date,
       city
 

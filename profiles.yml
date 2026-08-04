@@ -7,6 +7,6 @@ my_dbt_project:
       port: 5432
       user: dbt_user
       password: dbt_password
-      dbname: my_dbt_db
-      schema: dbt_dev          # dbt will create this schema and write models here
+      dbname:  my_dbt_db
+      schema: dbt_dev        # dbt will create this schema and write models here
       threads: 4

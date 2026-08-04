@@ -7,7 +7,7 @@ SELECT
     orderid AS order_id,
     COALESCE(custid, -1) AS cust_id,
     CASE
-        WHEN amount < 0 THEN 0
+        WHEN amount <= 0 THEN 1
         ELSE amount
     END AS amount,
     CASE

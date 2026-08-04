@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-
   - name: menika
     schema: menika
     tables:
+
       - name: rides
 
       - name: raw_customers
@@ -23,27 +23,25 @@ sources:
 
       - name: bronze_orders
 
-      - name: order_report
-      - name: daily_sales
-
-      - name: Menika_aarna
-
-      - name: meri_aarna
-
-
       - name: bronze_products
 
       - name: bronze_customers
 
       - name: bronze_driver
-      -  name: raw_sales
-         columns:
-           - name: sale_id
-             tests:
-                 - not_null
-                 - unique
+
+      - name: raw_sales
+        columns:
+          - name: sale_id
+            tests:
+              - not_null
+              - unique
+
       - name: product
+
       - name: sales
+      - name: raw_product
+      - name: orders
+      - name: order_history
 
 
 
