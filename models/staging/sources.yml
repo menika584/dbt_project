@@ -42,7 +42,8 @@ sources:
       - name: raw_product
       - name: orders
       - name: order_history
-
+      - name: revenue_transactions
+      - name: revenue_products
 
 
 
